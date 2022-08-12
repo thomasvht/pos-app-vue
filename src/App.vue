@@ -2,6 +2,7 @@
   <div class="app flex flex-column">
     <Navigation />
     <div class="app-content flex flex-column">
+      <ProductModal />
       <Home />
     </div>
   </div>
@@ -10,11 +11,13 @@
 <script>
 import Navigation from './components/Navigation.vue';
 import Home from './views/Home.vue';
+import ProductModal from './components/ProductModal.vue';
 export default {
   name: 'App',
   components: {
     Navigation,
-    Home
+    Home,
+    ProductModal
 }
 }
 </script>
