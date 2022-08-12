@@ -7,7 +7,6 @@
       >
     </div>
   </header>
-  ƒ
 </template>
 
 <script>
