@@ -4,7 +4,7 @@
     <div class="header flex">
       <div class="left flex flex-column">
         <h1>Products overview</h1>
-        <span>There are 2 total products.</span>
+        <span>There are {{ productData?.length}} total products.</span>
       </div>
       <div class="right flex">
         <div
@@ -15,11 +15,18 @@
         </div>
       </div>
     </div>
+    
+    <div v-if="productData.length">
+    <span v-for="(product, index) in productData" :product="product" :key="index">
+    {{product.description}}</span>
+    </div>
+
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapMutations, mapState } from 'vuex';
+
 export default {
     name: "HomePage",
     components: {},
@@ -28,6 +35,9 @@ export default {
         newProduct() {
           this.TOGGLE_PRODUCT();
         },
+    },
+    computed: {
+      ...mapState(['productData']),
     }
 };
 </script>

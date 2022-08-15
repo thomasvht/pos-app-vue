@@ -14,11 +14,15 @@
 import Navigation from './components/Navigation.vue';
 import ProductModal from './components/ProductModal.vue';
 import { mapActions, mapState } from 'vuex';
+
 export default {
   name: 'App',
   components: {
     Navigation,
     ProductModal
+},
+created() {
+  this.GET_PRODUCTS();
 },
 methods: {
   ...mapActions(["GET_PRODUCTS"]),
