@@ -2,22 +2,29 @@
   <div class="app flex flex-column">
     <Navigation />
     <div class="app-content flex flex-column">
-      <ProductModal />
-      <Home />
+      <transition name="product">
+      <ProductModal v-if="productModal" />
+      </transition>
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
 import Navigation from './components/Navigation.vue';
-import Home from './views/Home.vue';
 import ProductModal from './components/ProductModal.vue';
+import { mapActions, mapState } from 'vuex';
 export default {
   name: 'App',
   components: {
     Navigation,
-    Home,
     ProductModal
+},
+methods: {
+  ...mapActions(["GET_PRODUCTS"]),
+},
+computed: {
+  ...mapState(["productModal"]),
 }
 }
 </script>
@@ -45,6 +52,19 @@ export default {
   }
 }
 
+// animated transition
+
+.product-enter-active,
+.product-leave-active {
+  transition: 0.8s ease all;
+}
+
+.product-enter-from,
+.product-leave-to {
+  transform: translateX(-900px);
+}
+
+button,
 .button {
   cursor: pointer;
   padding: 16px 24px;
@@ -57,6 +77,9 @@ export default {
 /* positioning */
 .flex {
   display: flex;
+}
+.flex-end {
+  justify-content: flex-end;
 }
 
 .flex-column {
@@ -90,5 +113,13 @@ color: #AAA;
 
 .light-gray{
 color: #DFE0E2;
+}
+
+.bg-red {
+  background-color: #F72C25;
+}
+
+.bg-gray {
+  background-color: #AAA;
 }
 </style>

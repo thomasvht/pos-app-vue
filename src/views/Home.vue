@@ -19,11 +19,15 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
     name: "HomePage",
     components: {},
     methods: {
-        newProduct() {},
+      ...mapMutations(['TOGGLE_PRODUCT']),
+        newProduct() {
+          this.TOGGLE_PRODUCT();
+        },
     }
 };
 </script>
