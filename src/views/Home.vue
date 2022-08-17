@@ -17,19 +17,18 @@
     </div>
     
     <div v-if="productData.length">
-    <span v-for="(product, index) in productData" :product="product" :key="index">
-    {{product.description}}</span>
+    <Product v-for="(product, index) in productData" :product="product" :key="index" />
     </div>
-
   </div>
 </template>
 
 <script>
 import { mapMutations, mapState } from 'vuex';
+import Product from '@/components/Product.vue';
 
 export default {
     name: "HomePage",
-    components: {},
+    components: { Product },
     methods: {
       ...mapMutations(['TOGGLE_PRODUCT']),
         newProduct() {
